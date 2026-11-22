@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Homework Maker</title>
+  <meta name="description" content="Create printable English homework assignments." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">H</span><span>Homework Maker</span></div>
+
+      <label>Assignment title
+        <input id="title" type="text" value="English Practice" />
+      </label>
+
+      <div class="field-row">
+        <label>Grade
+          <select id="grade">
+            <option>Grade 6</option><option>Grade 7</option><option selected>Grade 8</option>
+            <option>Grade 9</option><option>Grade 10</option>
+          </select>
+        </label>
+        <label>Subject
+          <input id="subject" type="text" value="English" />
+        </label>
+      </div>
+
+      <label>Student name
+        <input id="studentName" type="text" placeholder="Optional" />
+      </label>
+
+      <label>Instructions
+        <textarea id="instructions" rows="3">Read each question carefully and write the correct answer.</textarea>
+      </label>
+
+      <div class="divider"></div>
+      <h2>Add questions</h2>
+
+      <div class="question-type-grid">
+        <button type="button" data-type="multiple">＋ Multiple choice</button>
+        <button type="button" data-type="short">＋ Short answer</button>
+        <button type="button" data-type="fill">＋ Fill in the blank</button>
+        <button type="button" data-type="matching">＋ Matching</button>
+      </div>
+
+      <button id="printButton" class="print-button" type="button">Print / Save PDF</button>
+    </aside>
+
+    <section class="workspace">
+      <div class="toolbar">
+        <span id="questionCount">0 questions</span>
+        <button id="clearButton" type="button">Clear all</button>
+      </div>
+
+      <article class="worksheet">
+        <header class="worksheet-header">
+          <div>
+            <p id="previewSubject">English • Grade 8</p>
+            <h1 id="previewTitle">English Practice</h1>
+          </div>
+          <div class="name-line">Name: <span id="previewName"></span></div>
+        </header>
+
+        <p id="previewInstructions" class="instructions">Read each question carefully and write the correct answer.</p>
+        <div id="questions" class="questions"></div>
+
+        <footer class="answer-key">
+          <h2>Answer Key</h2>
+          <div id="answerKey"></div>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="questionDialog">
+    <form id="questionForm" method="dialog">
+      <h2 id="dialogTitle">Add question</h2>
+      <input id="questionType" type="hidden" />
+
+      <label id="promptField">Question
+        <textarea id="prompt" required rows="3"></textarea>
+      </label>
+
+      <div id="choiceFields">
+        <label>Option A <input class="choice" type="text" /></label>
+        <label>Option B <input class="choice" type="text" /></label>
+        <label>Option C <input class="choice" type="text" /></label>
+        <label>Option D <input class="choice" type="text" /></label>
+        <label>Correct option
+          <select id="correctChoice"><option>A</option><option>B</option><option>C</option><option>D</option></select>
+        </label>
+      </div>
+
+      <div id="answerField" hidden>
+        <label>Expected answer <input id="answer" type="text" /></label>
+      </div>
+
+      <div id="matchingFields" hidden>
+        <label>Left items (one per line)<textarea id="matchLeft" rows="4"></textarea></label>
+        <label>Right items (one per line)<textarea id="matchRight" rows="4"></textarea></label>
+      </div>
+
+      <div class="dialog-actions">
+        <button id="cancelButton" type="button">Cancel</button>
+        <button type="submit" class="primary">Add to worksheet</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
